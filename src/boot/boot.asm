@@ -46,8 +46,7 @@ jc disk_error
 
 mov ax, 1
 mov bx, 0x7E00
-mov cl, 3
-mov dl, byte[boot_drive]
+mov cl, 32
 call disk_read
 jc disk_error
 
@@ -56,16 +55,16 @@ jmp 0x7E00
 disk_error:
 mov bx, disk_message
 call console_print
-call console_print.newline
 jmp $
 
-boot_drive: db 0
+boot_drive:   db 0
 boot_message: db "Started bootloader", 0
 disk_message: db "Disk error", 0
 
 %include "src/function/console.asm"
 %include "src/boot/disk.asm"
 
-times 479 - ($ - boot) db 0
+times 448 - ($ - boot) db 0
+date_message:    db "Bootloader dated Sep. 30, 2023", 0
 version_message: db "BIOS-PRINT bootloader rev. 001", 0
 dw 0xAA55
