@@ -25,25 +25,18 @@ pop bx
 pop ax
 ret
 
-keyboard_read: ; No input; Output: AL = ASCII value of pressed key (zero if none)
-push bx
-
-mov bh, ah
-
+keyboard_read: ; No input; Output: AH = Key scancode, AL = ASCII value of pressed key (zero if none)
 mov ah, 1
 int 0x16
 jnz .input
 
-xor al, al
-mov ah, bh
+xor ax, ax
 
 .done:
-pop bx
 ret
 
 .input:
 xor ah, ah
 int 0x16
 
-mov ah, bh
 jmp .done
