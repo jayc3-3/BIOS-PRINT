@@ -26,10 +26,7 @@ call console_clear
 ret
 
 console_clear: ; No input; No output
-push ax
-push bx
-push cx
-push dx
+pusha
 
 mov ah, 6
 xor al, al
@@ -44,10 +41,7 @@ call screen_set_cursor
 mov byte[console_cursorx], ch
 mov byte[console_cursory], cl
 
-pop dx
-pop cx
-pop bx
-pop ax
+popa
 ret
 
 console_print: ; Input: BX = Pointer to string; No output
@@ -72,10 +66,8 @@ je .loop_sety
 cmp dl, 30
 je .done
 
-push bx
-mov bx, dx
+mov cx, dx
 call screen_putc
-pop bx
 
 inc bx
 inc dh

@@ -15,8 +15,7 @@
 %define SCREEN_ASM 1
 
 screen_init: ; No input; No output
-push ax
-push cx
+pusha
 
 xor ah, ah
 mov al, 0x12
@@ -29,16 +28,14 @@ int 0x10
 xor cx, cx
 call screen_set_cursor
 
-pop cx
-pop ax
+popa
 ret
 
-screen_putc: ; Input: AL = ASCII character, BH = Cursor X, BL = Cursor Y; No output
+screen_putc: ; Input: AL = ASCII character, CH = Cursor X, CL = Cursor Y; No output
 push ax
 push bx
 push cx
 
-mov cx, bx
 call screen_set_cursor
 
 mov ah, 9
