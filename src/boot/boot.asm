@@ -46,7 +46,7 @@ jc disk_error
 
 mov ax, 1
 mov bx, 0x7E00
-mov cl, 4
+mov cl, 3
 mov dl, byte[boot_drive]
 call disk_read
 jc disk_error
@@ -60,7 +60,7 @@ call console_print.newline
 jmp $
 
 boot_drive: db 0
-boot_message: db "Started BIOS-PRINT bootloader", 0
+boot_message: db "Started bootloader", 0
 disk_message: db "Disk error", 0
 
 %include "src/function/console.asm"
