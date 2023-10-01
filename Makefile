@@ -1,23 +1,17 @@
 ASM = nasm
 
 ASMFLAGS = -Ox -f bin
-BINFILES = bootloader.bin runtime.bin
+BINFILES = BIOS-BOOTLOADER.bin runtime.bin
 
 COMPNAME = BIOS-PRINT
 
 all: complete
 
 clean:
-	rm *.bin
+	rm ${COMPNAME}.bin
 
-complete: bootloader runtime
+complete: runtime
 	cat ${BINFILES} > ${COMPNAME}.bin
 
-combine:
-	cat ${BINFILES} > ${COMPNAME}.bin
-
-bootloader: src/boot/boot.asm
-	${ASM} $< -o $@.bin ${ASMFLAGS}
-
-runtime: src/runtime/runtime.asm
+runtime: src/runtime.asm
 	${ASM} $< -o $@.bin ${ASMFLAGS}
