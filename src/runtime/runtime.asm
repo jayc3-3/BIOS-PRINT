@@ -116,7 +116,7 @@ je .empty_line
 cmp al, 32
 jl .done
 
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], al
 mov byte[bx+1], 0
 call console_print
@@ -133,7 +133,7 @@ cmp ah, -1
 je .backspace_dec_y
 mov byte[console_cursorx], ah
 
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], 0x20
 mov byte[bx+1], 0
 call console_print
@@ -145,7 +145,7 @@ jmp .done
 .backspace_dec_y:
 mov byte[console_cursorx], ah
 
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], 0x20
 mov byte[bx+1], 0
 call console_print
@@ -161,7 +161,7 @@ je .backspace_inc_y
 mov byte[console_cursorx], ah
 mov byte[console_cursory], al
 
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], 0x20
 mov byte[bx+1], 0
 call console_print
@@ -177,7 +177,7 @@ inc al
 mov byte[console_cursorx], ah
 mov byte[console_cursory], al
 
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], 0x20
 mov byte[bx+1], 0
 call console_print
@@ -188,7 +188,7 @@ mov byte[console_cursory], al
 jmp .done
 
 .tab:
-mov bx, 0x9000
+mov bx, 0x2000
 mov byte[bx], 0x20
 mov byte[bx+1], 0
 call console_print
