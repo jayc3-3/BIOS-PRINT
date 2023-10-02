@@ -57,8 +57,8 @@ reboot:
 jmp 0xFFFF:0
 
 runtime_message: db "Started BIOS-PRINT rev. 003", 0
-input_notice:    db "Press CTRL+Backspace to delete current line", 0
-reboot_notice:   db "Press CTRL+R to reboot", 0
+input_notice:    db "Press 'CTRL+Backspace' to delete current line", 0
+reboot_notice:   db "Press 'CTRL+R' to reboot", 0
 input_message:   db "Keyboard input enabled; type away!", 0
 owner_message:   db "BIOS-PRINT made by JayC3-3", 0
 github_message:  db "https://github.com/jayc3-3/BIOS-PRINT", 0
