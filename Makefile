@@ -8,7 +8,7 @@ COMPNAME = BIOS-PRINT
 all: complete
 
 clean:
-	rm ${COMPNAME}.bin
+	rm ${COMPNAME}.bin runtime.bin
 
 complete: runtime
 	cat ${BINFILES} > ${COMPNAME}.bin
