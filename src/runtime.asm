@@ -1,6 +1,6 @@
 ;
 ; BIOS-PRINT
-; Simple 'Operating System' that just lets you input text on a screen.
+; Simple OS that just lets you type on a screen.
 ;
 ; https://github.com/jayc3-3/BIOS-PRINT
 ; Free for use and/or modification
@@ -32,7 +32,6 @@ call console_print
 call keyboard_init
 
 call console_print.newline
-
 mov bx, reboot_notice
 call console_print
 mov bx, input_notice
@@ -57,11 +56,7 @@ jmp input_loop
 reboot:
 jmp 0xFFFF:0
 
-times 4096 - ($ - runtime) db 0
-
-data:
-
-runtime_message: db "Started BIOS-PRINT runtime rev. 002", 0
+runtime_message: db "Started BIOS-PRINT rev. 003", 0
 input_notice:    db "Press CTRL+Backspace to delete current line", 0
 reboot_notice:   db "Press CTRL+R to reboot", 0
 input_message:   db "Keyboard input enabled; type away!", 0
@@ -71,9 +66,8 @@ date_message:    db "Software dated Oct. 1, 2023", 0
 
 line_string: db "                                                                                ", 0
 
-times 4096 - ($ - data) db 0
-
-functions:
+%include "src/console.asm"
+%include "src/keyboard.asm"
 
 print_input:
 push ax
@@ -239,7 +233,4 @@ pop bx
 pop ax
 ret
 
-%include "src/console.asm"
-%include "src/keyboard.asm"
-
-times 8192 - ($ - functions) db 0
+times 16384 - ($ - runtime) db 0

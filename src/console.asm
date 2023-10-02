@@ -1,6 +1,6 @@
 ;
 ; BIOS-PRINT
-; Simple 'Operating System' that just lets you input text on a screen.
+; Simple OS that just lets you type on a screen.
 ;
 ; https://github.com/jayc3-3/BIOS-PRINT
 ; Free for use and/or modification

@@ -1,6 +1,6 @@
 ;
 ; BIOS-PRINT
-; Simple 'Operating System' that just lets you input text on a screen.
+; Simple OS that just lets you type on a screen.
 ;
 ; https://github.com/jayc3-3/BIOS-PRINT
 ; Free for use and/or modification
@@ -25,7 +25,7 @@ pop bx
 pop ax
 ret
 
-keyboard_read: ; No input; Output: AH = Key scancode, AL = ASCII value of pressed key (zero if none)
+keyboard_read: ; No input; Output: AH = Key scancode, AL = ASCII value of pressed key (AX = 0 if no key pressed)
 mov ah, 1
 int 0x16
 jnz .input
